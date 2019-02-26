@@ -10,10 +10,13 @@
 
 #define MOIST A0                                                           //  Analog pin connected to water level sensor 
 #define DHTPIN D4                                                           // digital pin connected to DHT sensor
+#define SWITCH  D3
 #define DHTTYPE DHT11                                                       // select dht type as DHT 11 or DHT22
 DHT dht(DHTPIN, DHTTYPE);                                                     
 
 void setup() {
+  pinMode(SWITCH,OUTPUT);                                                    //assign Switch as Output
+  digitalWrite(SWITCH, LOW);                                                 // Initially switch is off
   Serial.begin(9600);
   delay(1000);                
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);                                     //try to connect with wifi
@@ -52,5 +55,7 @@ void loop() {
   Firebase.pushString("/Sensor/Moisture", SoilMoist);                               // setup path and push water level value to database 
   Firebase.pushString("/Sensor/Humidity", Humid);                                  //setup path and push Humidity value to database
   Firebase.pushString("/Sensor/Temperature",Temp);                                //setup path and push Temperature value to database
+
+
    
 }
