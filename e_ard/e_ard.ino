@@ -8,7 +8,7 @@
 #define WIFI_SSID "network_name"                                             // input your home or public wifi name 
 #define WIFI_PASSWORD "password"                                    //password of wifi ssid
 
-#define MOIST A0                                                           //  Analog pin connected to water level sensor 
+#define MOIST A0                                                           //  Analog pin connected to Soil moisture sensor 
 #define DHTPIN D4                                                           // digital pin connected to DHT sensor
 #define SWITCH  D3
 #define DHTTYPE DHT11                                                       // select dht type as DHT 11 or DHT22
@@ -36,7 +36,7 @@ void setup() {
 }
 
 void loop() { 
-  float m = analogRead(MOIST)
+  float m = analogRead(MOIST)                                                 //Reading Moisture values
   float h = dht.readHumidity();                                              // Reading temperature or humidity takes about 250 milliseconds!
   float t = dht.readTemperature();                                           // Read temperature as Celsius (the default)
     
